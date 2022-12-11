@@ -30,8 +30,6 @@ export class LoginComponent implements OnInit {
    * 用以取得信箱欄位的表單控制項
    */
   get emailControl(): FormControl {
-    console.log(this.formGroup.get('email')?.errors);
-
     return this.formGroup.get('email') as FormControl;
   }
 
@@ -101,7 +99,13 @@ export class LoginComponent implements OnInit {
 
   // 綁定在表單上，當使用者按下登入按鈕時會觸發此函式
   login(): void {
-    // do login...
+    alert(`
+    ${this.formGroup.value.firstName}
+    ${this.formGroup.value.lastName}
+    ${this.formGroup.value.email}
+    ${this.formGroup.value.password}
+    ${this.formGroup.value.passwordRepeat}`)
+
   }
 
   /**
@@ -110,10 +114,6 @@ export class LoginComponent implements OnInit {
    * @param {FormControl} formControl 欲取得錯誤訊息的欄位的表單控制項 (by Angular)
    */
   getErrorMessage(formControl: FormControl): string {
-    console.log(this.formGroup.get('passwordRepeat')?.value);
-
-    console.log(formControl);
-
     let errorMessage!: string;
     if (!formControl.errors || !formControl.touched) {
       errorMessage = '';
@@ -128,13 +128,4 @@ export class LoginComponent implements OnInit {
     }
     return errorMessage;
   }
-
-
-
-  onChange(y:any){
-    console.log(y);
-  }
-
-
-
 }
