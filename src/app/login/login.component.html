@@ -1,0 +1,58 @@
+<form [formGroup]="formGroup" (ngSubmit)="login()">
+  <p>
+    <label for="account">first name：</label>
+    <input
+      type="email"
+      id="firstName"
+      [formControl]="firstNameControl"
+      [ngClass]="{ 'errors': firstNameControl.errors && firstNameControl.touched && firstNameControl.invalid}"
+    />
+    <span class="error-message">{{ getErrorMessage(firstNameControl) }}</span>
+  </p>
+  <p>
+    <label for="account">last name：</label>
+    <input
+      type="email"
+      id="lastName"
+      [formControl]="lastNameControl"
+      [ngClass]="{ 'errors': lastNameControl.errors && lastNameControl.touched && lastNameControl.invalid}"
+    />
+    <span class="error-message">{{ getErrorMessage(lastNameControl) }}</span>
+  </p>
+  <p>
+    <label for="account">email：</label>
+    <input
+      type="email"
+      id="email"
+      [formControl]="emailControl"
+      [ngClass]="{ 'errors': emailControl.errors && emailControl.touched && emailControl.invalid}"
+    />
+    <span class="error-message" *ngIf="emailControl.errors && emailControl.touched && emailControl.invalid">{{ getErrorMessage(emailControl) }}</span>
+
+
+  </p>
+  <p>
+    <label for="password">密碼：</label>
+    <input
+      type="password"
+      id="password"
+      [formControl]="passwordControl"
+      [ngClass]="{ 'errors': passwordControl.errors && passwordControl.touched && passwordControl.invalid}"
+      />
+    <span class="error-message">{{ getErrorMessage(passwordControl) }}</span>
+  </p>
+  <p>
+    <label for="password">密碼確認：</label>
+    <input
+      type="password"
+      id="passwordRepeat"
+      [formControl]="passwordRepeatControl"
+      [ngClass]="{ 'errors': passwordRepeatControl.errors && passwordRepeatControl.touched && passwordRepeatControl.invalid}"
+      equalsTo="password"
+    />
+    <span class="error-message">{{ getErrorMessage(passwordRepeatControl) }}</span>
+  </p>
+  <p>
+    <button type="submit" [disabled]="formGroup.invalid">登入</button>
+  </p>
+</form>

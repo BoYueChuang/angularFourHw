@@ -1,16 +1,20 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
+  declarations: [ //外建
+    AppComponent,
+    LoginComponent
   ],
-  imports: [
+  imports: [ //內建
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
