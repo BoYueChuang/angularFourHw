@@ -38,6 +38,7 @@
       id="password"
       [formControl]="passwordControl"
       [ngClass]="{ 'errors': passwordControl.errors && passwordControl.touched && passwordControl.invalid}"
+      #password
       />
     <span class="error-message">{{ getErrorMessage(passwordControl) }}</span>
   </p>
@@ -47,10 +48,12 @@
       type="password"
       id="passwordRepeat"
       [formControl]="passwordRepeatControl"
-      [ngClass]="{ 'errors': passwordRepeatControl.errors && passwordRepeatControl.touched && passwordRepeatControl.invalid}"
+
+      [ngClass]="{ 'errors': password.value !== passwordRepeatControl.value && passwordRepeatControl.touched}"
       equalsTo="password"
     />
-    <span class="error-message">{{ getErrorMessage(passwordRepeatControl) }}</span>
+    <span class="error-message" *ngIf="password.value !== passwordRepeatControl.value && passwordRepeatControl.touched ">密碼不正確
+    </span>
   </p>
   <p>
     <button type="submit" [disabled]="formGroup.invalid">登入</button>
